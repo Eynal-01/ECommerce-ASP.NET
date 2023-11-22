@@ -1,5 +1,7 @@
 ﻿@model ProductListViewModel
 
+<a class="btn btn-xs btn btn-outline-dark" href="/product/SortWithLetter?page=@Model.CurrentPage&category=@Model.CurrentCategory">A-Z</a>
+<a class="btn btn-xs btn btn-outline-dark" href="/product/SortForPrice?page=@Model.CurrentPage&category=@Model.CurrentCategory">High-Lower</a>
 <table class="table">
     <thead>
         <tr>
@@ -29,7 +31,6 @@
                     @if (item.HasAdded)
                     {
                         <a id="remove" class="btn btn-xs btn-danger" href="/Cart/RemoveDirectly?productId=@item.ProductId">Remove from Cart</a>
-                        item.HasAdded = false;
                     }
                     else if (!item.HasAdded)
                     {

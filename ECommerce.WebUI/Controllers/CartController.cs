@@ -5,6 +5,7 @@ using ECommerce.WebUI.Models;
 using ECommerce.WebUI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Runtime;
 
 namespace ECommerce.WebUI.Controllers
 {
@@ -90,6 +91,7 @@ namespace ECommerce.WebUI.Controllers
         {
             var productToBeAdded = await _productService.GetById(productId);
             productToBeAdded.HasAdded = false;
+            await _productService.Update(productToBeAdded);
             var cart = _cartSessionService.GetCart();
             _cartService.RemoveFromCart(cart, productId);
             _cartSessionService.SetCart(cart);

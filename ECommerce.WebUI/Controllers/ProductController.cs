@@ -103,5 +103,64 @@ namespace ECommerce.WebUI.Controllers
                 return View();
             }
         }
+
+        public async Task<IActionResult> SortWithLetter(int page = 1, int category = 0)
+        {
+            var products = await _productService.GetAllByCategory(category);
+            var sortedProducts = products.OrderBy(p => p.ProductName);
+            int pageSize = 10;
+            var model = new ProductListViewModel();
+            model.Products = sortedProducts.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            model.CurrentCategory = category;
+            model.PageCount = ((int)Math.Ceiling(products.Count / (double)pageSize));
+            model.PageSize = pageSize;
+            model.CurrentPage = page;
+            model.hasSortClicked = true;
+            return View("Index", model);
+        }
+
+        public async Task<IActionResult> SortWithLetterDesc(int page = 1, int category = 0)
+        {
+            var products = await _productService.GetAllByCategory(category);
+            var sortedProducts = products.OrderByDescending(p => p.ProductName);
+            int pageSize = 10;
+            var model = new ProductListViewModel();
+            model.Products = sortedProducts.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            model.CurrentCategory = category;
+            model.PageCount = ((int)Math.Ceiling(products.Count / (double)pageSize));
+            model.PageSize = pageSize;
+            model.CurrentPage = page;
+            model.hasSortClicked = false;
+            return View("Index", model);
+        }
+
+        public async Task<IActionResult> SortForPrice(int page = 1, int category = 0)
+        {
+            var products = await _productService.GetAllByCategory(category);
+            var sortedProducts = products.OrderBy(p => p.UnitPrice);
+            int pageSize = 10;
+            var model = new ProductListViewModel();
+            model.Products = sortedProducts.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            model.CurrentCategory = category;
+            model.PageCount = ((int)Math.Ceiling(products.Count / (double)pageSize));
+            model.PageSize = pageSize;
+            model.CurrentPage = page;
+            model.hasSortPrice = true;
+            return View("Index", model);
+        }
+        public async Task<IActionResult> SortForPriceDesc(int page = 1, int category = 0)
+        {
+            var products = await _productService.GetAllByCategory(category);
+            var sortedProducts = products.OrderByDescending(p => p.UnitPrice);
+            int pageSize = 10;
+            var model = new ProductListViewModel();
+            model.Products = sortedProducts.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            model.CurrentCategory = category;
+            model.PageCount = ((int)Math.Ceiling(products.Count / (double)pageSize));
+            model.PageSize = pageSize;
+            model.CurrentPage = page;
+            model.hasSortPrice = false;
+            return View("Index", model);
+        }
     }
 }
