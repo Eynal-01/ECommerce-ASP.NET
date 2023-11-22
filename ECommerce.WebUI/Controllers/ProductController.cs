@@ -130,7 +130,7 @@ namespace ECommerce.WebUI.Controllers
             model.PageCount = ((int)Math.Ceiling(products.Count / (double)pageSize));
             model.PageSize = pageSize;
             model.CurrentPage = page;
-            model.hasSortClicked = false;
+            model.hasDescSortClicked = true;    
             return View("Index", model);
         }
 
@@ -159,7 +159,7 @@ namespace ECommerce.WebUI.Controllers
             model.PageCount = ((int)Math.Ceiling(products.Count / (double)pageSize));
             model.PageSize = pageSize;
             model.CurrentPage = page;
-            model.hasSortPrice = false;
+            model.hasDescSortPrice = true;
             return View("Index", model);
         }
     }

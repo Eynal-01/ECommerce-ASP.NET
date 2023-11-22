@@ -10,6 +10,8 @@ namespace ECommerce.WebUI.Models
         public int PageSize { get; set; }
         public int CurrentPage { get; set; }
         public bool hasSortClicked { get; set; }
+        public bool hasDescSortClicked { get; set; }
         public bool hasSortPrice { get; set; }
+        public bool hasDescSortPrice { get; set; }
     }
 }
