@@ -12,6 +12,7 @@ namespace ECommerce.WebUI.Models
         public bool hasSortClicked { get; set; }
         public bool hasDescSortClicked { get; set; }
         public bool hasSortPrice { get; set; }
+        public bool hasPriceSortClicked { get; set; }
         public bool hasDescSortPrice { get; set; }
     }
 }

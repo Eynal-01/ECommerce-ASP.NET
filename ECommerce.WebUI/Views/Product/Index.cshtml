@@ -1,7 +1,36 @@
 ﻿@model ProductListViewModel
 
-<a class="btn btn-xs btn btn-outline-dark" href="/product/SortWithLetter?page=@Model.CurrentPage&category=@Model.CurrentCategory">A-Z</a>
-<a class="btn btn-xs btn btn-outline-dark" href="/product/SortForPrice?page=@Model.CurrentPage&category=@Model.CurrentCategory">High-Lower</a>
+<a class="btn btn-xs btn btn-outline-dark" href="/product/SortWithLetter?hasSortClicked=@Model.hasSortClicked&page=@Model.CurrentPage&category=@Model.CurrentCategory">
+    @if (Model.hasSortClicked)
+    {
+        <div>
+            A-Z
+        </div>
+    }
+    else
+    {
+        <div>
+            Z-A
+
+        </div>
+    }
+</a>
+<a class="btn btn-xs btn btn-outline-dark" href="/product/SortForPrice?hasPriceSortClicked=@Model.hasPriceSortClicked&page=@Model.CurrentPage&category=@Model.CurrentCategory">
+
+    @if (Model.hasPriceSortClicked)
+    {
+        <div>
+            Lower To Higher
+        </div>
+    }
+    else
+    {
+        <div>
+            Higher To Lower
+        </div>
+    }
+</a>
+
 <table class="table">
     <thead>
         <tr>
@@ -46,19 +75,4 @@
                     current-page="@Model.CurrentPage"
                     page-count="@Model.PageCount"
                     page-size="@Model.PageSize">
-
 </product-list-pager>
-
-@* <script>
-    function ChangeSortLetterContent() {
-        var btn = document.getElementById("sortLetter");
-    @for (int i = 0; i < Model.Products.Count; i++)
-    {
-        if (Model.hasSortClicked)
-        {
-            Model.CurrentCategory += 1;
-
-        }
-    }
-        }
-</script> *@
