@@ -1,5 +1,11 @@
 ﻿@model ProductListViewModel
 
+<div class="row"> 
+    <div class="col-6">
+       <input type="text" placeholder="Search here..." id="txtSearch" class="form-control m-1 float-end" style="width:50%;"/>
+    </div>
+</div>
+
 <a class="btn btn-xs btn btn-outline-dark" href="/product/SortWithLetter?hasSortClicked=@Model.hasSortClicked&page=@Model.CurrentPage&category=@Model.CurrentCategory">
     @if (Model.hasSortClicked)
     {
@@ -31,8 +37,8 @@
     }
 </a>
 
-<table class="table">
-    <thead>
+<table class="table table-bordered text-center">
+    <thead class="bg-dark text-light">
         <tr>
             <th> ProductName</th>
             <th>UnitPrice</th>
@@ -70,6 +76,10 @@
         }
     </tbody>
 </table>
+
+@section scripts{
+    <script src="/js/CustomJs.js"></script>
+}
 
 <product-list-pager current-category="@Model.CurrentCategory"
                     current-page="@Model.CurrentPage"
