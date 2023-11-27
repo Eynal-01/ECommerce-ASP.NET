@@ -34,6 +34,21 @@ namespace ECommerce.WebUI.Controllers
             return View(model);
         }
 
+        public async Task<List<Product>> Search(string word)
+        {
+            var allProducts = await _productService.GetAll();
+            if (allProducts != null && !string.IsNullOrEmpty(word))
+            {
+                var result = allProducts.Where(r => r.ProductName.ToLower().Contains(word.ToLower())).ToList();
+                var model = new ProductListViewModel
+                {
+                    Products = result
+                };
+                return result;
+            }
+            return null;
+        }
+
         // GET: ProductController/Details/5
         public ActionResult Details(int id)
         {

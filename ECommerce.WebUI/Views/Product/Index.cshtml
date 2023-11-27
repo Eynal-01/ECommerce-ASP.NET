@@ -1,8 +1,8 @@
 ﻿@model ProductListViewModel
 
-<div class="row"> 
+<div class="row">
     <div class="col-6">
-       <input type="text" placeholder="Search here..." id="txtSearch" class="form-control m-1 float-end" style="width:50%;"/>
+        <input type="text" placeholder="Search here..." id="form1" class="form-control m-1 float-end" style="width:50%;" />
     </div>
 </div>
 
@@ -37,8 +37,8 @@
     }
 </a>
 
-<table class="table table-bordered text-center">
-    <thead class="bg-dark text-light">
+<table class="table">
+    <thead>
         <tr>
             <th> ProductName</th>
             <th>UnitPrice</th>
@@ -46,7 +46,7 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="mytable">
         @foreach (var item in Model.Products)
         {
             <tr>
@@ -77,7 +77,7 @@
     </tbody>
 </table>
 
-@section scripts{
+@section scripts {
     <script src="/js/CustomJs.js"></script>
 }
 
